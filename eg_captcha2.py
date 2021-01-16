@@ -2,7 +2,7 @@ import Image
 import urllib2
 import pytesser
 
-session = 'PHPSESSID=14pu3f74ac8h8nq8aumsvh7cf0;enigmafiedV4=a%3A4%3A%7Bi%3A0%3Bs%3A5%3A%2258073%22%3Bi%3A1%3Bs%3A40%3A%22689dab65afe88cc1981aa752751452a9825f78ce%22%3Bi%3A2%3Bi%3A1639928348%3Bi%3A3%3Bi%3A2%3B%7D'
+session = 'PHPSESSID=<your-session-id-here>;enigmafiedV4=<your-longass-session-id-here>'
 
 def download_photo(filename):
     file_path = "%s%s" % ("C:\DUMP_SPACE\\", filename)
