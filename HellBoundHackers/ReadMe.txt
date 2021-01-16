@@ -12,17 +12,17 @@ This website serves as a learning environment for hackers and webmasters who wis
 
 The simulated security challenges are there to teach users a variety of things:
 Challenge		What you learn
-Basic	-	Simple web based programming
+Basic	      -	Simple web based programming
 Javascript	-	Javascript programming and techniques (i.e cookies)
-Realistic	-	How web based exploits work
+Realistic	  -	How web based exploits work
 Application	-	How to exploit and manipulate applications
 Encryption	-	Apply your mind and break easy - hard encryptions
-Logical	-	Apply your mind to solve problems logically
-Stegano	-	The art of hiding information
-Other	-	General computer related skills
-Tracking	-	How to trace IP's based on various situations
-Patching	-	How to patch and secure content from vunerabilties.
-Rooting	-	Basic knowledge in protocals and networks.
+Logical	    -	Apply your mind to solve problems logically
+Stegano	    -	The art of hiding information
+Other	      -	General computer related skills
+Tracking	  -	How to trace IP's based on various situations
+Patching	  -	How to patch and secure content from vunerabilties.
+Rooting	    -	Basic knowledge in protocals and networks.
 
 
 To uphold legal integrity within this website and community, please read the site disclaimer before accessing any information contained within this site.
