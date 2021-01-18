@@ -16,8 +16,8 @@ foreach($map as $line){
   $total += ($paper+$rib_slack);
   $ribbon = ($dimen[0]*2)+($dimen[1]*2)+($l*$w*$h);
   $rib_total += $ribbon;
-  }
+}
   
-  echo 'The Total is: '.$total.' and your Ribbon total is: '.$rib_total.'<br />';
+echo 'The Total is: '.$total.' and your Ribbon total is: '.$rib_total.'<br />';
   
-  ?>
+?>
