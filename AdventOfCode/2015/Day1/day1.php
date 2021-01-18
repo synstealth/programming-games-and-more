@@ -7,11 +7,11 @@ while(!feof($theFile)){
 }
 fclose($theFile);
 
-$floor=0;$base=false;
+$floor=0;$base=false;$level=0;
 foreach($map as $chr){
 	$dir = str_split($chr,1);
 	foreach($dir as $d){
-		if(!$base){$chr++;}
+		if(!$base){$level++;}
 		switch($d){
 			case '(': $floor++;	break;
 			case ')': $floor--; break;
@@ -19,5 +19,5 @@ foreach($map as $chr){
 		if($floor <= -1){$base=true;}
 	}
 }
-echo 'You are now at Floor: '.$floor.' and the first basement is: '.$chr.'<br />';
+echo 'You are now at Floor: '.$floor.' and the first basement is: '.$level.'<br />';
 ?>
