@@ -1,11 +1,8 @@
 <?
-$theFile = fopen("day1.txt","r");
-$map=array();
-while(!feof($theFile)){
-	$line = fgets($theFile);
-	array_push($map,$line);
-}
-fclose($theFile);
+require_once('../../core/init.php');
+$url = "https://adventofcode.com/2015/day/1/input";
+$output = aocGetinputFile($url);
+$map = str_split($output);
 
 $floor=0;$base=false;$level=0;
 foreach($map as $chr){
