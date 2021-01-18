@@ -1,7 +1,6 @@
 <?
 require_once('../../core/init.php');
-$url = "https://adventofcode.com/2015/day/1/input";
-$output = aocGetinputFile($url);
+$output = aocGetinputFile("https://adventofcode.com/2015/day/1/input");
 $map = str_split($output);
 
 $floor=0;$base=false;$level=0;
