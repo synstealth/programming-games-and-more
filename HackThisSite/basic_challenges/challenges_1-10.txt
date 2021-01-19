@@ -1,1 +1,31 @@
+BASIC HTS CHALLENGES
 
+1: basic / delphi
+  You have to view source and locate the comment tag in HTML such as this: <!-- and you will find your password there.
+  
+2:(nothing)
+  the login is tricky, trying to fool the user into thinking a password is requried, however there is no password to begin with!
+  
+3: cable / plus 
+  You will see the error string, diagnose and use the error code to access level4/password.php by revealing the file path to it.
+  
+4: december  / basketball    
+  You will use Chrome inspector tool to make changes in the HTML and enter oprah and enter ur own email then submit.
+  
+5: tree  / monkey
+  same as above
+
+6: python  / strike              
+  use -0 -1 -2 -3 -4 -5 to decrypt the words  ex   e -4 = b 
+
+7: july  /  warcraft               
+  enter any year with "; ls"  to get strange php then put in url level7/k1kh31b1n55h.php
+
+8: liberty  / speaktome       
+  use <!--#exec cmd="ls /home/xec96/public_html/web/level8/"--> find the strange php then put in url
+
+9: daisy   / memory            
+  same as above <!--#exec cmd="ls /home/xec96/public_html/web/level9/"--> then put in url
+
+10:  dont need pw               
+  use  javascript:void(document.cookie="level11_authorized'yes")
