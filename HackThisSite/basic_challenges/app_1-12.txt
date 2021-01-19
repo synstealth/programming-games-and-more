@@ -1,0 +1,14 @@
+Use a standard Hex editor or Olly Debugger to get answers, the first 1-6 were pretty straightforward easily seen in plaintext.
+
+1: smashthestate
+2: liberation
+3: fireyourboss
+4: daytona
+5: powertripper           <--changed
+6: magic                  <--changed
+7: put in aaaaozz to get answer (caged)
+8: 2644-164-73427         -- find vbavartsteq then look for call and binary dump NOP then F9 pick any nbr.
+9: SoundKing              --use hex editor and match the same 3 values 
+10: HiddenSecrets         -- use api spy. enter handle and hide it then it shows the pw
+11: Search&Destroy        --use vbreformer and look at the form1.frx
+12: creeper               --check the dots. think what it does...
