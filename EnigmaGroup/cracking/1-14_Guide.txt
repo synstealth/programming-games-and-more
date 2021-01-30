@@ -1,7 +1,18 @@
-This requires experience using Hex Editor or Olly debugger Tools
+This requires experience using notepad, Hex Editor or Olly debugger Tools
 
-cracking_1 through cracking_5:
-   find all text strings and you will find the password easily
+cracking_1
+    use notepad to view the garbage. find "way2easy" then enter that as the password to reveal the actual pw: vbCritical to beat this.
+
+cracking_2
+   use notepad to view the garbage to find the password: TopGun, enter that in the app. notice the submit button gets disabled when u move mouse over it. dont worry. 
+   just put    mouse over cancel to enable then click in text. then hit tab key to select the submit button, hit space bar to enter to get the password: JohnnyRed
+
+cracking_3
+   use racevb6 4.4.0 to exploit the file and reveal the picture with password in it: the password is KevinMitnick
+
+cracking_4:
+
+cracking_5:
 
 cracking_6:
 	fill with NOPS at address 00403270
