@@ -1,0 +1,42 @@
+1 Header Injection
+Use live HTTP headers, scan to reveal Password: MzUwN2Rm= in the headers, decode using base64
+
+2  Server Side Includes
+Read Wiki about SSI – use code <!-- #exec cmd=”ls –l” --> to get directory listing, find passwdfile.txt to get password
+
+3 RegExp Skills
+^[A-Za-z0-9]{5} 
+Allows any 5 char string of any lowercase, any uppercase and any digits to be passed thru
+
+^[^e-z0-9A-Z]+[^A-Z]{4}{?[a-z]*._?
+ONLY 4 chars of abcd are allowed and must be in lowercase with rest of any chars [a-z] following it
+
+^[A9FbdHh5]+[T]*.{2}_?[a-z]+
+Any of the 2 chars in this A9FbdHh5 must pass thru with rest of 1 or more of the following [a-z]
+
+	^[^YdSeu][r]+[^r]+=?_?[aeiou]+[^pstuvwxyz]+
+	YdSeu is not allowed but must contain “r” in it along with rest of any aeiou and not containing pstuvwxyz in the end.
+
+	^(c|a|b|d)+[^A-Za-df-gs-z]{2}{?[^yCXBbq]*[^pqrst]*[a]+[^passwd]*}?
+	Any 2 of the letters c,a,b,d are allowed while any one of the yCXBbq are not allowed, it has one ‘a’ in the string and the rest does not contain “passwd” in the end
+
+	^.*[k0pst]$
+Anything in the end of the string must contain one of the following chars “k0pst”
+
+	^[^0-9A-Z]{5}$
+	The final 5 char string will not contain numbers or uppercase in the end
+	The filtered string I had figured out is “ break “
+
+	
+4 Buffer Overflow
+Use firebug to modify the input maxlength to longer and insert super long string to cause buffler overflow – show listing and find the password
+
+5 Buffer Overflow(2)
+Use the URL $_GET param to input super long string to reveal the listing and find the password
+
+6 Shopping Cart Exploitation
+	Enter -1 as quantity and click update to lower the price!
+
+7 SQL Column Truncation
+Use the registration page – use firebug to modify the html input maxlength to longer and enter “admin-------super long spaces here------x” and register as that, then login as admin with your registered password
+
