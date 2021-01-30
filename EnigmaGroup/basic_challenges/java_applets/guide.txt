@@ -1,0 +1,16 @@
+Applet cracking 1
+	View the source to reveal the applet1.class, download it then use text editor to view the contents of the file, look carefully, you will reveal the password in plaintext which is: JavaApplet
+
+Applet cracking 2
+	--incomplete—
+yhnH hjwB vfUK _212 e8k0 IJKR
+
+
+Applet cracking 3
+	--incomplete—
+
+Applet cracking 4
+	open applet with xcode, it shows as java script, notice two MD5 hash, crack both them and you will get this:
+javarocks
+8592-4353-4882-9172-8634-2323
+submit the key to beat this 
