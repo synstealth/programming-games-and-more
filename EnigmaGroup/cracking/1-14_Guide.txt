@@ -1,0 +1,39 @@
+This requires experience using Hex Editor or Olly debugger Tools
+
+cracking_1 through cracking_5:
+   find all text strings and you will find the password easily
+
+cracking_6:
+	fill with NOPS at address 00403270
+	:: ?? ::
+
+cracking_7:
+
+cracking_8:
+
+cracking_9:
+	bruteforce the password using 1-7
+	::1337666::
+
+cracking_10:
+
+cracking_11:
+	go to address: 00401340 where calls JMP and strcmp
+	edit with JNZ and run the app
+	enter: 73688678
+	::InfiniteMisbehaviour::
+
+cracking_12:
+	use CryptAPI to find the md5 and reveal the pw
+	md5: 14097924cfa505382b0b94c91b9e5c99
+	::c0ckh3ad::
+
+
+cracking_13:
+
+cracking_14:
+	the file creates an batch file in the temp folder
+	open the batch file, you shld reveal an pw ??
+	:: ?? ::
+
+
