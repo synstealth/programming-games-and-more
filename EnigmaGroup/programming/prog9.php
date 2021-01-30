@@ -5,23 +5,16 @@
 #############################################################
 $Url = "http://www.enigmagroup.org/forums/login2/";
 $login_email = 'synstealth';
-$login_pass = 'SevenMGTEbug007';
+$login_pass = 'xxxxxxxxxx';
 #############################################################
-
-// is curl installed?
-if (!function_exists('curl_init')){ die('CURL is not installed!');}
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $Url);
 curl_setopt($ch, CURLOPT_REFERER, "http://www.enigmagroup.org");
 curl_setopt($ch, CURLOPT_USERAGENT, "MozillaXYZ/1.0");
 curl_setopt($ch, CURLOPT_HEADER, 0); 
-
-// post the login data (string)
-curl_setopt($ch, CURLOPT_POSTFIELDS,'user='.urlencode($login_email).'&passwrd='.urlencode($login_pass).'&cookieneverexp=on&hash_password=a7f9e74c5f2dcdd07998c42007fac4a3');
+curl_setopt($ch, CURLOPT_POSTFIELDS,'user='.urlencode($login_email).'&passwrd='.urlencode($login_pass).'&cookieneverexp=on&hash_password=xxxxxxxx');
 curl_setopt($ch, CURLOPT_POST, 1);
-
-// should curl return or print the data? 1 = return, 0 = print
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_COOKIESESSION, true);
@@ -269,4 +262,7 @@ echo '<hr>';
 curl_setopt($ch, CURLOPT_POSTFIELDS, $query);
 echo curl_exec($ch); 
 curl_close($ch);
+
+
+// INCOMPLETE
 ?>
