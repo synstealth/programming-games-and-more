@@ -1,0 +1,74 @@
+PHP Patching 1 - XSS
+Line 45
+echo 'You are already logged in as ' . $userinfo[0];
+patched to
+echo 'You are already logged in as ‘.htmlspecialchars($userinfo[0]);
+
+PHP Patching 2 – SQL Injection
+	Line 10
+$query = mysql_query("SELECT * FROM articles WHERE id = '" . $_GET['id'] . "'") or die(0);
+
+patched to
+$query = mysql_query("SELECT * FROM articles WHERE id = '" . mysql_real_escape_string($_GET['id']) . "'") or die(0);
+
+PHP Patching 3 – Log Posioning
+
+PHP Patching 4 – Local File Inclusion 
+	Line 9
+	$include = $_GET['file']; 
+patched to:
+	$include = str_replace("../", "", $_GET['file']);
+
+
+C++ Patching 1 - Buffer Overflow
+	Line 9	
+strcpy(Buffer, argv[1]);
+patched to
+strncpy(Buffer, argv[1],9);
+because of the array size, you must put a limit so it will not go out of bounds.
+C++ Patching 2 – Format String Vuln 
+	Line 6
+printf(argv[1]);
+patched to	
+	printf("%s",argv[1]);
+
+Injecting % symbols executing functions can lead to unexpected changes of flow control and execution of arbitrary code in context of the vulnerable program
+
+C++ Patching 3 – Buffer Overflow
+	
+C++ Patching 4 – Input Error
+
+C++ Patching 5 – Limit Boundary Vuln
+
+C++ Patching 6 - Negavitiy
+
+
+C# Patching
+
+
+ASP Patching 1
+line 3
+id = Request("ID")
+patched to:
+id = CLng(Request("ID"))
+
+ASP Patching 2
+	Line 11
+username = Request.Form("uname")
+patched to
+username = Replace(Request.Form("uname"), "'", "''")
+
+	line 12
+password = Request.Form("pword")
+patched to
+password = Replace(Request.Form("pword"), "'", "''")
+
+
+ColdFusion Patching 1 
+	Line 9
+	WHERE PageID="#Url.PageID#"
+Patched to:
+WHERE PageID=<cfqueryparam value="#Url.PageID#" cfsqltype="CF_SQL_INTEGER">
+
+
+Perl Patching 1
