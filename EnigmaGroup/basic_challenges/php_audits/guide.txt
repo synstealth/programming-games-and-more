@@ -1,0 +1,56 @@
+1 PHP Audit Discovery
+	This code is showing XSS exploit in the php_self, injecting a string with hex characters to filter out the injection is not needed but can be used.
+Injection: index.php?=%27%22/%3E%3Cscript%3Ealert(1)%3C/script%3E
+		Which becomes this: index.php?='"/><script>alert(1)</script>
+
+2 PHP Audit Discovery
+	It checks for admin cookie with value=1 so we can just easily javascript:void(document.cookie=”admin=1”); hit enter and refresh the page to beat it.
+
+3 PHP Audit Discovery
+	The code shows that the hidden text field with value of “member” is in there and is un-editable, use firebug plugin on firefox to edit the html contents to change the member to admin, then hit submit to beat it!
+
+4 PHP Audit Discovery
+	The code shows that you can include anything in the URL so that is RFL exploit, enter any remote web address to beat it! 	
+Ex: index.php?page=http://www.google.com
+
+5 PHP Audit Discovery
+	This is LFI exploit, the code shows that you have config.php in there and you want to include that in the file so, do this : index.php?file=config.php to beat it!
+
+6 PHP Audit Discovery
+	The code shows that username must equal to admin, then the results gets executed in the query ignoring the password field, so we use the famous SQL injection in the password using the admin as the username.
+Injection: username: admin, password: ‘ OR 1=1—
+
+7 PHP Audit Discovery
+	The code shows that we can execute unix commands using the dig parameter, okay. Let’s start by reading up stacked commands, we use ; to separate commands.
+	Enter this: ls; cat config.php and enter to beat this since that we enter ls to execute the dir listing then using cat to view the contents of the config.php file! 
+
+8 PHP Audit Discovery
+	The code checks for the IP and UserAgent. Ahh. Inject your cookie stealer in the User Agent to beat this! :P
+
+9 PHP Audit Discovery
+	The code checks for the word ‘index.php’ or checks if the 4th position in the url which is the position where you put in index.php or is empty, then it throws the error. We can trick it by injecting the index.php as hex characters like this:
+%69%6E%64%65%78%2E%70%68%70 which translates to index.php!
+
+10 PHP Audit Discovery
+The code has this function: utf8_decode(mysql_real_escape_string($_GET['pass']));
+This tells me that you have a exploit right there by using the utf8_encode() inside the utf8_decode() to cancel out the function itself!
+We inject using this: %FF%F0%40%FC
+
+11 PHP Audit Discovery
+The code checks for the HTTP_X_FORWARDED_FOR, this is a XSS hole where anyone can spoof their IP address but not only IP address, you can inject something like this in the php code using cURL:
+
+$ip = '<script>alert("hacked by synstealth");</script>';  
+curl_setopt( $ch, CURLOPT_HTTPHEADER, 
+array("REMOTE_ADDR: $ip",
+"HTTP_X_FORWARDED_FOR: $ip",
+"X_FORWARDED_FOR: $ip"
+)); 
+curl_setopt($ch, CURLOPT_HEADER, 0); 
+curl_setopt($ch, CURLOPT_URL, 'http://www.enigmagroup.org/missions/basics/auditing/11/'); 
+		use this code and beat it!
+
+
+12 PHP Audit Discovery
+		this is about running php code via URL injection using eval by overriding the /e modifier in the preg_replace() function. Here this character %23 will become #. This enforces system command to be run, then using the /e%00 to override the filter ending up /e modifier for the preg_replace while the null byte character %00 will cause the filter to stop searching for the rest of the string. Now that string with /e modifier becomes eval() and causing the string to become this “#eval(phpinfo())” causing it to be run as php code.
+
+	Injection:	?search=phpinfo();%23|apple/e%00
