@@ -1,0 +1,36 @@
+1 Server IP/OS
+	Find information about EnigmaGroup.org by using whois in the google or wherever you find
+	IP address:  85.17.239.186
+	Webserver: Apache
+	Name servers:	
+	ns1.hakipedia.com
+ns1.privatetunnels.com
+	ns2.hakipedia.com
+	ns2.privatetunnels.com
+	Tech’s name and email:
+	Name:  Registration Private
+Email: enigmagroup.org@domainsbyproxy.com
+
+2 PHP Version
+	google up php easter egg, you will get a 4 different sessionIDs
+	for this one to reveal phpinfo use this :
+	index.php?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000 in the URL to reveal the version number which is : PHP 4.4
+
+
+3 Full Path Disclosure – Array[]
+	HINT: the [] gives away.. 
+	Use this ?page[ ]=search in the URL to reveal the error message
+And you will find this file: _config_/errors.php
+Ingore the errors.php, enter the directory /_config_/ to reveal the contents, find config.inc 
+You will see $password = 'a7343b797861c3b462223805a5dc4a08';
+Decrypt using MD5 – answer is: chumpy
+
+4 Full Path Disclosure - $_SESSION[]
+	do a javascript injection to insert phpsessid cookie – 
+injection:  javascript:void(document.cookie='PHPSESSID=');
+then refresh the page to reveal session error message revealing the path: /home/ghack/2stac/corefile.inc.php
+	let’s check what is in the folder /2stac/ - reveal config.inc and find the password: 8de1167ae6772b6bb675928de028f9d6
+	password: biatchz, go to admin.php and login with that!
+
+5 Full Path Disclosure – Zero Divison
+do the calculation- input any number divided by 0 to throw the error!
