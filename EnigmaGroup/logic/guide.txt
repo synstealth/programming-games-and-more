@@ -1,0 +1,132 @@
+Logic1
+	
+  
+Logic2
+bag1 = $524 
+bag2 = $262 
+bag3 = $131 
+bag4 = $66 
+bag5 = $33 
+bag6 = $16 
+bag7 = $8 
+bag8 = $4 
+bag9 = $2 
+bag10 = $1 
+bag11 = $1 
+You should be able to give any amount between $1-$1048 with a combo of these bags. 
+Example: $999 would be bag1+bag2+bag3+bag4+bag6
+answer: 11
+
+
+Logic3
+A=Adam B=Bob T=Tails H=Heads *= Adam More Tails than Bob 
+Three coins 8 possible outcomes 
+A ..B .... A ..B... A....B... A...B....A... B. ....A....B.... A....B .... A... B 
+TT T....TT H ...TH T ...TH H.. HT T ...HT H...HH T ...HH H 
+*..............* ..........................*................ ,....... * 
+Therefore = 4/8 = 2/4 = 1/2
+
+
+Logic4
+The number of divisors of a natural number may be determined by writing down its prime factorization.  The Fundamental Theorem of Arithmetic guarantees that the prime factorization is unique.
+Let n = p1a1 · ... · prar , where p1 ... pr are prime numbers, and a1 ... ar are positive integers.
+Now, each divisor of n is composed of the same prime factors, where the ith exponent can range from 0 to ai.
+Hence there are a1 + 1 choices for the first exponent, a2 + 1 choices for the second, and so on.
+Therefore the number of positive divisors of n is (a1 + 1)(a2 + 1) ... (ar + 1).
+The unique prime factorization of 1000 is 23 · 53, which contains six prime factors.
+So if n has exactly 1000 positive divisors, each ai + 1 is a divisor of 1000, where i may take any value between 1 and 6.
+At one extreme, when i = 1, a1 + 1 = 1000, so a1 = 999, and the smallest integer of this form is 2999, a number with 301 decimal digits.
+At the other extreme, when i = 6, a1 = a2 = a3 = 1, and a4 = a5 = a6 = 4.
+In this latter case, the smallest integer of this form is clearly 24 · 34 · 54 · 7 · 11 · 13 = 810,810,000.
+In fact, of all the natural numbers with exactly 1000 divisors, 810,810,000 is the smallest.  A demonstration by enumeration follows.  Having established this result, it will be a simple matter to find the smallest integer greater than 1 billion that has 1000 divisors.
+Let n = 24 · 34 · 54 · 7 · 11 · 13.
+The smallest integer that can be obtained by combining the six prime factors in various ways is:
+•	5 · 5 · 5 · 4 · 2, yielding 24 · 34 · 54 · 73 · 11 = (72/13)n > 3n
+•	10 · 5 · 5 · 2 · 2, yielding 29 · 34 · 54 · 7 · 11 = (25/13)n > 2n
+•	25 · 5 · 2 · 2 · 2, yielding 224 · 34 · 5 · 7 · 11 = (220/53 · 13)n > 500n
+•	8 · 5 · 5 · 5, yielding 27 · 34 · 54 · 74 = (23 · 73/11 · 13)n > 10n
+•	10 · 5 · 5 · 4, yielding 29 · 34 · 54 · 73 = (25 · 72/11 · 13)n > 10n
+•	10 · 10 · 5 · 2, yielding 29 · 39 · 54 · 7 = (25 · 34/11 · 13)n > 15n
+•	20 · 5 · 5 · 2, yielding 219 · 34 · 54 · 7 = (215/11 · 13)n > 200n
+•	25 · 5 · 4 · 2, yielding 224 · 34 · 53 · 7 = (220/5 · 11 · 13)n > 1000n
+Any other combination of the prime factors would contain a power of 2 greater than 30, which, on its own, would yield an integer greater than 1 billion.
+Therefore, the smallest natural number with exactly 1000 divisors is 810,810,000.
+To find the smallest number greater than 1 billion with exactly 1000 divisors, we must substitute larger prime(s) in the factorization of 810,810,000.
+Logically, the smallest such substitution must be either: replace 54 · 7 with 5 · 74, or replace 13 with 17.
+Arithmetically, we find that 24 · 34 · 5 · 74 · 11 · 13 = 2,224,862,640, while 24 · 34 · 54 · 7 · 11 · 17 = 1,060,290,000.
+Therefore the smallest natural number greater than 1 billion that has exactly 1000 positive divisors is 1,060,290,000.
+
+
+Logic5
+It's not zero, because if there was nothing in the bag, you can't draw two items out and therefore the odds of drawing two thing (and of the same colour) is also zero. 
+When you put 20 balls of some colour into a bag with nothing in it, and draw two balls out, there is a probability of 1 that they will be the same colour. Since 0≠1, the answer is not zero. 
+There are 19 colours in the bag (before the other 20 are added). Each colour is represented by 10 balls. Thus there are 19*10=190 balls in the bag.
+
+
+Logic6
+suppose we call the (total) distance that is uphill on our way to Madeupland A, the distance that is downhill B, and the flat distance C. 
+on the portions that make up A, the truck's speed is 72, so if T is the time spent on these portions we have, 
+A = 72T 
+
+similarly if U is the time spent going downhill, B = 90U. 
+and if V is the time spent on level ground, C = 80V. 
+so: 
+
+T = A/72 
+U = B/90 
+V = C/80. 
+
+A/72 + B/90 + C/80 = 3 
+on the return trip, B is the distance going UPHILL, so the time it takes is B/72. A is now downhill, so it takes A/90 and the level ground is still level going the other way, so the time spent on level ground is still C/80. the return trip takes 3.5 hours so: 
+A/90 + B/72 + C/80 = 3.5 
+
+subtracting the first equation form the second, gives: 
+
+A(1/90 - 1/72) - B(1/90 - 1/72) = 0.5 or 
+A - B = (0.5)/(1/90 - 1/72) = (0.5)/(-1/360) = -180 
+or, B = A + 180 
+
+substituting back in equation 1: 
+
+A/72 + (A + 180)/90 + C/80 = 3 
+A/72 + A/90 + C/80 = 1 
+A/40 + C/80 = 1 
+C = 80 - 2A. 
+
+the total distance between the two towns is: 
+A + B + C = A + (A + 180) + (80 - 2A) = 2A + 260 - 2A = 260.
+
+
+
+Logic7
+Note that 2004 = 22 × 501.
+Since 2 is relatively prime to 501, by Euler's Totient Theorem, 2phi(501)  1 (mod 501).  (Where phi(n) is Euler's totient function.)
+The prime factorization of 501 is 3 × 167, so we calculate phi(501) = (3 − 1)(167 − 1) = 332.
+Hence 21992 = (2332)6  16  1 (mod 501).
+Then clearly 21992 = (22)996  0 (mod 4).
+We now combine these two results to calculate 21992 (mod 2004).
+If x  1 (mod 501), then x = 1 + 501t, for some integer t.
+Hence 1 + 501t  1 + t  0 (mod 4), so that t  3 (mod 4).
+So 1 + 501t = 1 + 501(3 + 4s) = 1504 + 2004s for some integer s.
+That is, 21992  1504 (mod 2004).
+(The Chinese Remainder Theorem assures us that this solution is unique, mod 2004.) 
+Now, working modulo 2004,  22004 	= 21992 × 212
+ 	 1504 × 212
+ 	= (1504 × 22) × 210
+ 	 4 × 1024
+ 	 88.
+
+
+
+Logic8
+Assume that the first triangle has sides a, b, c and the second has sides a', b', c'. Since they're similar you have a/a'=b/b'=c/c'=:L. You also know that two of the sides of the triangle coincide and that one differs by 20141, that is b'=a, c'=b and a'=c+20141. You want to know the sum of the thirds sides, which is a'+c=2c+20141. The only thing that remains to be computed is the value of c:
+
+c=L·c'=L·b=L^2·b'=L^2·a=L^3·a'=L^3·(c+20141) => c·(1-L^3)=20141·L^3 => c= 20141·L^3/(1-L^3)
+Assume that L=p/q (with p and q positive integer coprime numbers). 
+Then L^3/(1-L^3)=p^3/(q^3-p^3) 
+and we need q^3-p^3 to divide 20141
+so we must find two coprime positive integers such that the difference of their cubes is 1, 11, 1831 or 20141 (since 20141=11·1831 is the decomposition in prime factors).
+30^3-19^3= two integers such the difference of their cubes is either 11 or 1831
+p=19, q=30
+c=20141·L^3/(1-L^3)=p^3=19^3=6859 
+and then the sum of the two third sides is 2·6859+20141=33859.
