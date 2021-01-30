@@ -40,19 +40,16 @@ function brainfuck_interpret(&$s, &$_s, &$d, &$_d, &$i, &$_i, &$o) {
          if((int)ord($d[$_d]) == 0) {
            $brackets = 1;
                  while($brackets && $_s++ < strlen($s)) {
-                 if($s[$_s] == '[')
-                 $brackets++;
-                         else if($s[$_s] == ']')
-                         $brackets--;
-                 }
-                 }
-                 /* Execute loop */
-                 else {
-           $pos = $_s++-1;
-                 /* The closing ] returns true when the loop has to be executed again. If so, then return
-                 to the $pos(ition) where the opening [ is. */
-         if(brainfuck_interpret($s, $_s, $d, $_d, $i, $_i, $o))
-         $_s = $pos;
+			 if($s[$_s] == '[')
+			 $brackets++;
+				 else if($s[$_s] == ']')
+				 $brackets--;
+			 }
+                 }else {
+           		$pos = $_s++-1;
+                 /* The closing ] returns true when the loop has to be executed again. If so, then return to the $pos(ition) where the opening [ is. */
+         	if(brainfuck_interpret($s, $_s, $d, $_d, $i, $_i, $o))
+         		$_s = $pos;
          }
          break;
          /* Return true when loop has to be executed again. It is redundant to the [ checking, but
@@ -83,23 +80,16 @@ function brainfuck($source, $input='') {
 #############################################################
 $Url = "http://www.enigmagroup.org/forums/login2/";
 $login_email = 'synstealth';
-$login_pass = 'SevenMGTEbug007';
+$login_pass = 'xxxxxxx';
 #############################################################
-
-// is curl installed?
-if (!function_exists('curl_init')){ die('CURL is not installed!');}
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $Url);
 curl_setopt($ch, CURLOPT_REFERER, "http://www.enigmagroup.org");
 curl_setopt($ch, CURLOPT_USERAGENT, "MozillaXYZ/1.0");
 curl_setopt($ch, CURLOPT_HEADER, 0); 
-
-// post the login data (string)
-curl_setopt($ch, CURLOPT_POSTFIELDS,'user='.urlencode($login_email).'&passwrd='.urlencode($login_pass).'&cookieneverexp=on&hash_password=a7f9e74c5f2dcdd07998c42007fac4a3');
+curl_setopt($ch, CURLOPT_POSTFIELDS,'user='.urlencode($login_email).'&passwrd='.urlencode($login_pass).'&cookieneverexp=on&hash_password=xxxxxxxx');
 curl_setopt($ch, CURLOPT_POST, 1);
-
-// should curl return or print the data? 1 = return, 0 = print
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_COOKIESESSION, true);
