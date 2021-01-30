@@ -1,0 +1,66 @@
+1: Nurv 1 (easter egg 1: /zomx/ ) 
+View the source in the about page to reveal the hidden password which is: 64a07c. Now, let’s go to the login page – think of what the famous username would be…  right its Administrator and put in the password you found.
+
+2: Nurv 2
+View the cookies, notice the username=NURVGuest, change that into admin’s name BillJobs then hit refresh. U will see the admin page..  go to addcode page and enter this to reveal the path.
+/../../../index in the title box and anything in the code to beat it.
+
+3: Nurv 3
+Log as JohnSmith:JohnSmith to observe the forum to find CSRF injection in the profile page. →
+Search for robots.txt to reveal the hidden folder: nurv/bank/access_log/access_log
+Find the correct link in the access logs.
+	with the correct amount, recipient number, and comment saying owned – paste that link:	
+	authed/index.php?page=transfer&amount=$10000&recipient=13370539&comment=owned
+	in the edit profile page (all of the boxes) and click update.
+
+4: Nurv 4
+look for robots again - forum/robots.txt
+reveal hidden paths (administration, development, moderation)
+look up the members list – note the moderator name 
+Matricks then use the 'OR 1=1— injection in the password.
+	
+Once you are logged in, 
+Go to mod page, click on Matricks to change level, first use RefControl to put in http://www.enigmagroup.org/missions/realistics/nurv/4/forum/index.php?page=administration&mod=editusers&uid=5 as your referrer then change Matricks to administration.
+
+	Tamper data may do the trick too!
+
+5: Nurv 5
+	( EASTEREGG 2 hangman! )
+log in as stevegates to find base64 hash: bWluL3BhZ2VzL2g0bmdtNG4vaW5kZXgucGhwDQo 
+min/pages/h4ngm4n/index.php
+log in as Matricks to find another base64 hash:
+c2lvbnMvcmVhbGlzdGljcy9udXJ2LzUvbWFpbC9hZA
+sions/realistics/nurv/5/mail/ad
+log in as GaryWinston to find another base64 hash:
+aHR0cDovL3d3dy5lbmlnbWFncm91cC5vcmcvbWlz 
+http://www.enigmagroup.org/mis
+
+enter this in the url:
+http://www.enigmagroup.org/missions/realistics/nurv/5/mail/admin/pages/h4ngm4n/index.php
+
+	 use .htaccess bruter script to guess the password for BillJobs’s http auth login.
+The password is guessed based on names and places..
+Password is: roland
+
+	Now that we are logged in! –  we click on user details, we see this list:
+BillJobs	billjobs@nurv.com	61515b2083cc6057f6a687ba5e235a16
+SteveGates	stevegates@nurv.com	3d0d7c827da38f76d88c9c2f01625a74
+Matricks	matricks@nurv.com	db82887dd3397218c27a4bdc53598717
+GaryWinston	garywinston@nurv.com	6f4bc03eb47c1a5e6531511b7f392864
+HybridTheory	hybridtheory@nurv.com	d5fe7c33b7bcd2823685dfb69a4a2a64
+
+61515b2083cc6057f6a687ba5e235a16 MD5: f4m0u5
+3d0d7c827da38f76d88c9c2f01625a74 MD5: bunni3s
+db82887dd3397218c27a4bdc53598717 MD5: pr1z3s!
+6f4bc03eb47c1a5e6531511b7f392864 MD5: an3ast3r
+d5fe7c33b7bcd2823685dfb69a4a2a64 MD5: elton
+	
+	use those password only in the mail area – it does not work in the forums
+
+	login as BillJobs
+	check his mails  -- notice you have 2 messages, copy the contents of the 2020code message, then access the link directly in the url instead of clicking it because the pop up is disabled and will not allow you to send anything. http://www.enigmagroup.org/missions/realistics/nurv/5/mail/compose.php?mid=1&action=forward 
+put the nurvrealfive@enigmagroup.org in the recipient and hit send to beat the mission!
+
+6: Nurv 6
+
+	referrer hack….
