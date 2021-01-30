@@ -4,14 +4,11 @@
 #############################################################
 $Url = "http://www.enigmagroup.org/forums/login2/";
 $login_email = 'synstealth';
-$login_pass = 'SevenMGTEbug007';
+$login_pass = 'xxxxxxxxxx';
 $referer = 'http://www.enigmagroup.org/missions/programming/8/image.php'; 
-$cookie = 'PHPSESSID=a7f9e74c5f2dcdd07998c42007fac4a3;enigmafiedV4=a%3A4%3A%7Bi%3A0%3Bs%3A5%3A%2258073%22%3Bi%3A1%3Bs%3A40%3A%22689dab65afe88cc1981aa752751452a9825f78ce%22%3Bi%3A2%3Bi%3A1571947672%3Bi%3A3%3Bi%3A2%3B%7D;';
+$cookie = 'PHPSESSID=xxxxxxxx;enigmafiedV4=xxxxxxxxxxxxxx';
 
 #############################################################
-
-// is curl installed?
-if (!function_exists('curl_init')){ die('CURL is not installed!');}
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_REFERER, $referer);
