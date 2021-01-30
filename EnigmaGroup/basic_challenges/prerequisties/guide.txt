@@ -1,0 +1,9 @@
+1 View source
+	Just view the source and paste the password as you see it
+
+2 URL Modifications
+The error message shows that it cannot find the file /dontlookinhere/password.txt use that message to look in the folder called /dontlookinhere/ to find password.inc then view the inc file to find the password!
+
+3 ROBOTS
+Simple, type in robots.txt in the URL to reveal the contents of the robots.txt file then access the hidden folder /f0rk/
+Find the password, which is in config.inc file!
