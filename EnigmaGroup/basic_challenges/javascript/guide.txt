@@ -1,0 +1,56 @@
+1 Form Modification
+2	Login Bypass
+3 	Login Bypass
+4 	Login Bypass
+5 	Login Bypass
+6 	Login Bypass
+7 	Login Bypass
+var base= new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z","a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"); var data=new Array(3); base.reverse(); data[0]=base[42]; data[1]=base[11]; data[2]=base[17]; data[3]=base[12]; data[4]=base[7]; data[5]=base[43]; data[6]=base[6]; password=prompt("Please enter the Password!",""); if (password==data.join("_")){     window.location.href=""+password+".php"; }
+
+	decode this by alerting out the arrays
+
+
+8 	Login Bypass
+	view source, find the .js file and view the contents:
+#@~^pwEAAA==W!x^DkKxP^WTrxvPWWM:~b@&	@&i&z,?+D~OtP!/nDUCs+~l	[PalddSWD[~7l.km8^+d@&d7lD,EknD	lh+,'~WKD:c;/DR7CsE@&i\CD~2m/dhK.N,'~WKD: 2m/dR7C^En@&@&izz,Z4nm0P;/DUCs+PmUN,wlkdAWMNcP@&drW,`~`,;/DUCs+Pxx,?ODbUTRWMWsZtmD;GN`~FZvSq8F~8TcBFFZSqFZ~8 qPb~*P'[,cPalddSWD[~{'~?D.bxLc0MW:;tm.ZKNn`,FT{BF!8S,R~,FS1%,#,#~#@&7P@&7dknY:khnKEYc~rVGmmObWUcDwVmmcPEJQwm/dAKDN3ERatwE~bir~,!~#I@&i8@&ds/@&7`@&ddCsDO`,EIW;,lM+PSDKUocJ~#p@&7N@&8A3wAAA==^#~@�
+#@~^pwEAAA==W!x^DkKxP^WTrxvPWWM:~b@&	@&i&z,?+D~OtP!/nDUCs+~l	[PalddSWD[~7l.km8^+d@&d7lD,EknD	lh+,'~WKD:c;/DR7CsE@&i\CD~2m/dhK.N,'~WKD: 2m/dR7C^En@&@&izz,Z4nm0P;/DUCs+PmUN,wlkdAWMNcP@&drW,`~`,;/DUCs+Pxx,?ODbUTRWMWsZtmD;GN`~FZvSq8F~8TcBFFZSqFZ~8 qPb~*P'[,cPalddSWD[~{'~?D.bxLc0MW:;tm.ZKNn`,FT{BF!8S,R~,FS1%,#,#~#@&7P@&7dknY:khnKEYc~rVGmmObWUcDwVmmcPEJQwm/dAKDN3ERatwE~bir~,!~#I@&i8@&ds/@&7`@&ddCsDO`,EIW;,lM+PSDKUocJ~#p@&7N@&8A3wAAA==^#~@�
+
+use online decoder to decode it into this:
+
+function login( form ){
+	// Set the username and password variables
+	var username = form.user.value
+	var password = form.pass.value
+
+	// Check username and password. 
+	if ( ( username == String.fromCharCode( 106,111,104,110,110,121 ) ) && ( password == String.fromCharCode( 107,101,98,97,98 ) ) ){
+		setTimeout( "location.replace( '"+password+".php' );", 0 );
+	}else{
+		alert( "You are wrong." );
+	}
+}
+&#65533;
+
+	
+decode this: String.fromCharCode(106,111,104,110,110,121) to find the username which is: johnny
+decode this: String.fromCharCode( 107,101,98,97,98 ) to find the password which is: kebab
+
+9 SubStrings()
+	edit the code to alert out the results, brute your way in using regex skills. Notice the three long strings, check for the letters that show up more than once – get the pattern of each letters that repeats in all three strings.
+	Pass: beofroperon
+
+10 charCodeAt()
+	edit the code to alert out the result of sumof2 to figure out whatever matches 2308 – I end up matched this string: b1nEz
+
+11 charAt(); indexOf()
+	wrote a php/js code on my server to reverse decipher it.
+Link: http://xxxxxxxxxxxxxxxxxxxxxx.com/developer/code_games_sites/enigmagroup/js_11.php
+
+	And the password is: gdclhpdhbied
+
+
+12 Date Manipulation
+
+write a bruteforcer with binary search and find the password by brute. URL:
+http://xxxxxxxxxxxxxxxxxxxxxx.com/developer/code_games_sites/enigmagroup/js_12.html
+ enter the pw in url to beat it: 158847.php
