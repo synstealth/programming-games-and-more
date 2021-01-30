@@ -1,0 +1,8 @@
+1 $_GET superglobal includes
+Click the button to reveal the error message, open password.php to get administrator and password.
+
+2 Hex Injection
+We know that %27 equals to the char symbol called single quote or a tick which looks like this: ‘  the encoding for the percent is %25 so we concat those two together to generate %27 in the end..  we start by putting in %2527 to force the %25 to become % itself then % ends up with %27 which now becomes the char ‘ thus bypassing the filter.
+
+3 Hex Injection(2)
+You want to split the file splitme.php into this file split me.php – do the same technique you did with the %25 symbol but this time, use %0d%0a as an carriage return character, we end up typing the string like this: split%0D%0Ame.php to generate white space causing the string to be split.
