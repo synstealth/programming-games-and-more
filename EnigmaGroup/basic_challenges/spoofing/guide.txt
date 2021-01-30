@@ -1,0 +1,16 @@
+1 Proxy
+Look for proxy list with medium anonymity and use that to beat it
+
+2 User Agent
+Use EnigmaFox as your User Agent to beat it..  firefox useragent switcher would be your best shot!
+
+3 Referrer
+	Use your HTTP headers/Tamper Data to modify the referrer with this:
+	Referer: admin.enigmagroup.org 
+
+4 Resolution
+Use your HTTP Headers/Tamper Data to modify the resolution with this:
+	resolution: 1337x1337
+
+5 Cookie Modification
+	create Cookie with Authorization=true and refresh
